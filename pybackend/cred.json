@@ -1,5 +1,5 @@
 {
-    "sr_audio_file" : "http://jackymoon.co/test.wav",
+    "sr_audio_file" : "https://dl.dropboxusercontent.com/s/4ygn9m8wscadl22/TestAudioUpload.wav",
 		"sr_engine": "MREC",
 		"sr_engine_paramaters": {
 		"operation_mode": "accurate"

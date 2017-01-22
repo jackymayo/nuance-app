@@ -3,6 +3,27 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <style>
+
+  .bar{
+    fill: steelblue;
+  }
+
+  .bar:hover{
+    fill: brown;
+  }
+
+	.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+  </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -28,16 +49,16 @@
       <div class = "row" id = "firstrow">
         <div class = "col-lg-3">
           <div class = "btn-group-vertical" role = "group">
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "1">2017-01-09 20:34:32</button>
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "2">2017-01-07 21:45:59</button>
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "3">2017-01-05 23:51:26</button>
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "4">2017-01-04 16:22:37</button>
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "5">2017-01-03 17:34:45</button>
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "6">2017-01-01 18:55:18</button>
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "7">2017-12-29 22:13:16</button>
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "8">2017-12-25 21:35:23</button>
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "9">2017-12-18 19:22:54</button>
-            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "10">2016-12-15 20:40:43</button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "1">2017-01-09 : Turing Test </button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "2">2017-01-07 : Tokyo text</button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "3">2017-01-05 : Nuance Sample File</button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "4">2017-01-04 : Pacific War</button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "5">2017-01-03 : Apple trees</button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "6">2017-01-01 : Bacterial </button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "7">2017-12-29 : Alexander Fleming</button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "8">2017-12-25 : An anochrism </button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "9">2017-12-18 : Trump bio</button>
+            <button class = "btn btn-secondary btn-block" onclick="loaddata(this)" id = "10">2016-12-15: Soccer rules </button>
           </div>
         </div>
 
@@ -45,8 +66,7 @@
         <div class = "col-lg-9 mainbody">
           <div class = "row" id="scatter-load">  
           </div>
-
-          <div class = "row">
+          <div id ="graph" class = "row">
             <script src="http://d3js.org/d3.v3.min.js"></script>
           </div>
 
@@ -55,31 +75,7 @@
               <div class="card">
                 <div class="card-header">Words:</div>
                 <div class="card-block">
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word1">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word2">Banana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word3">AppleBananaBanana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word4">AppleBanana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word5">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word6">AppleBanana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word7">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word8">AppleBanana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word9">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word10">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word11">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word12">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word13">Banana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word14">Fight</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word15">AppleBanana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word16">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word17">AppleBanana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word18">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word19">AppleBanana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word20">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word21">Apple</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word22">Banana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word23">AppleBananaBanana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word24">AppleBanana</button>
-                  <button class = "btn btn-secondary muwords" onclick = "loadword(this)" id = "word25">Apple</button>
+
                 </div>
               </div>
             </div>

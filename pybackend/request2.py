@@ -9,7 +9,8 @@ import re
 import time
 import gensim
 import pickle
-
+from mpl_toolkits.mplot3d import Axes3D
+import csv
 
 
 # body = open("cred.json")
@@ -41,7 +42,7 @@ text = text.lower()
 words = text.split()
 
 # Count words
-counts = collections.Counter( words)
+counts = collections.Counter(words)
 print(counts)
 
 df = pandas.DataFrame.from_dict(counts, orient='index')
@@ -88,18 +89,33 @@ df = pandas.DataFrame.from_dict(counts, orient='index')
 #    pickle.dump(df_word, fp)
 
 # load saved word vectors
-# open ('word_vectors.p', 'rb') as fp:
- #  df_word = pickle.load(fp)
+with open('word_vectors.p', 'rb') as fp:
+    df_word = pickle.load(fp)
 
 #print(df_word)
 
 # Reduce the dimensions to only 2d (or 3d, change n_componenents)
 model_tsne = TSNE(n_components=2, random_state=1)
-# dim_reduced = model_tsne.fit_transform(df_word)
-#print(dim_reduced)
+dim_reduced = model_tsne.fit_transform(df_word)
+print(dim_reduced)
 
-# Plot the dimension-reduced vectors in 2d
-# .scatter(dim_reduced[:,0], dim_reduced[:,1])
+tsne_json = []
+for label, x, y in zip(df_word.index, dim_reduced[:,0], dim_reduced[:, 1]):
+    tsne_json.append({"word" : label, "x": x, "y": y})
+
+with open('tsne.json', 'w') as f:
+    json.dump(tsne_json, f)
+
+print(tsne_json)
+
+# with open('tsne.csv', 'w') as fp:
+#     writer = csv.writer(fp, delimiter=',')
+#     for line in zip(df_word.index, dim_reduced[:,0], dim_reduced[:, 1]):
+#         writer.writerow(line)
+
+#Plot the dimension-reduced vectors in 2d
+# plt.scatter(dim_reduced[:,0], dim_reduced[:,1])
 # for label, x, y in zip(df_word.index, dim_reduced[:,0], dim_reduced[:, 1]):
 #    plt.annotate(label, xy=(x, y), xytext=(0, 0), textcoords='offset points')
 # plt.show()
+

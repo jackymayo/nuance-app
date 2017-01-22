@@ -39,10 +39,11 @@ def wcount():
     arr = []
     for x in countskeys:
         arr.append({"Letter": x, "Freq": counts[x]})
-    print(arr)
+    newarr = sorted(arr, key=lambda k: k['Freq'])
+    print(newarr)
 
     with open('wcount'+ selection+ '.json', 'w') as f:
-        json.dump(arr, f)
+        json.dump(newarr, f)
     return json.dumps(counts)
 
 @app.route('/wordlist', methods=["POST"])
