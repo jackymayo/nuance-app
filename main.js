@@ -219,17 +219,17 @@ function showScatterPlot(data) {
 
     // this sets the scale that we're using for the X axis. 
     var x = d3.scale.linear()
-        .domain([0,d3.max(data, function (d) {
+        .domain(d3.extent(data, function (d) {
         return d.x;
-        })])
+        }))
     // the range maps the domain to values from 0 to the width minus the left and right margins (used to space out the visualization)
         .range([0, width - margins.left - margins.right]);
 
     // this does the same as for the y axis
     var y = d3.scale.linear()
-        .domain([0,d3.max(data, function (d) {
-            return d.y;
-        })])
+        .domain(d3.extent(data, function (d) {
+        return d.x;
+        }))
     // Note that height goes first due to the weird SVG coordinate system
     .range([height - margins.top - margins.bottom, 0]);
 
@@ -255,7 +255,7 @@ function showScatterPlot(data) {
     var wordGroup = words.enter().append("g").attr("class", "node")
     // this is how we set the position of the items. Translate is an incredibly useful function for rotating and positioning items 
     .attr('transform', function (d) {
-        return "translate(" + x(d.x) + "," + y(d.y) + ")";
+        return "translate(" + x(d.x * 100) + "," + y(d.y * 100) + ")";
     });
 
     // we add our first graphics element! A circle! 

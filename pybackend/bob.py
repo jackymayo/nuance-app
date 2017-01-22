@@ -52,7 +52,7 @@ def scatterpairs():
     request_json = request.json
     selection = request_json['data']
 
-    with open('tsne' + str(selection) + '.json', 'r') as f:
+    with open('tsne' + str(int(selection)) + '.json', 'r') as f:
         data = json.load(f)
 
     return json.dumps(data)
