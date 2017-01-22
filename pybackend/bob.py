@@ -46,6 +46,17 @@ def wcount():
         json.dump(newarr, f)
     return json.dumps(counts)
 
+@app.route('/scatterpairs', methods=["POST"])
+def wordlist():
+    posted = request.get_data()
+    request_json = request.json
+    selection = request_json['data']
+    raw = getraw(int(selection))
+    text = re.sub(r'[^\w\s\']', '', raw)
+    text = text.lower()
+    words = text.split()
+    return json.dumps(words)
+
 @app.route('/wordlist', methods=["POST"])
 def wordlist():
     posted = request.get_data()
