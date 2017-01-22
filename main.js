@@ -34,7 +34,7 @@ function loaddata(thebutton) {
         console.log(result);
         }
     });
-
+    
     $.ajax({
     type : "POST",
     url : "http://127.0.0.1:5000/scatterpairs",
@@ -42,8 +42,8 @@ function loaddata(thebutton) {
     data: JSON.stringify({"data": id}),
     contentType: 'application/json;charset=UTF-8',
     success: function(result) {
-            showScatterPlot;
             console.log(result);
+            showScatterPlot(result);
         }
     });
 

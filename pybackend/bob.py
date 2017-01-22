@@ -47,15 +47,15 @@ def wcount():
     return json.dumps(counts)
 
 @app.route('/scatterpairs', methods=["POST"])
-def wordlist():
+def scatterpairs():
     posted = request.get_data()
     request_json = request.json
     selection = request_json['data']
 
-    with open('tsne' + str(selection) + '.json', 'w') as f:
+    with open('tsne' + str(selection) + '.json', 'r') as f:
         data = json.load(f)
 
-    return data
+    return json.dumps(data)
 
 @app.route('/wordlist', methods=["POST"])
 def wordlist():
