@@ -1,7 +1,7 @@
 # nuance-app
 We'll be using the app to target new language learners. 
 
-The concept is this, we'll have something recording the person's speach all day.
+The concept is this, we'll have something recording the person's speech all day.
 
 At the end of the day, his speech will be broken into sentences (we could parse the grammar)
 
